@@ -1,22 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const MainLayout = ({ children }) => {
+const OutlineLayout = ({ children }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.outline}>
       {children}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
+ 
   outline: {
     borderWidth: 1,
     borderColor: 'black',
@@ -24,5 +18,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainLayout;
+export default OutlineLayout;
 
