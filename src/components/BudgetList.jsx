@@ -14,6 +14,8 @@ import MainLayout from '../layout/Mainlayout';
 
 
 export default function BudgetList({budgets}){
+
+    
     return(
         <SafeAreaView>
              {budgets.map((budget, index) => ( 

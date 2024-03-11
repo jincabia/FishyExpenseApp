@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
 
   outline: {
@@ -22,6 +22,12 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     padding: 10,
   },
+
+  budgetName:{
+    fontSize:20,
+    fontWeight:'bold'
+  }
+
 });
 
 export default MainLayout;
