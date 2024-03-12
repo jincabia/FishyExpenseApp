@@ -26,15 +26,3 @@ export default function BudgetList({budgets}){
         </SafeAreaView>
     );
 }
-
-// {items.map((value,index)=> {
-//     return(
-//       <Pressable key={index}>
-//         <View style={[styles.task]}>
-//           <Text style={[styles.taskText]}>
-//             {value}
-//           </Text>
-//         </View>
-//       </Pressable>
-//     )
-//   })}
