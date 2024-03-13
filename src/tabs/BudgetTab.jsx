@@ -4,7 +4,7 @@ import MainLayout from '../layout/Mainlayout';
 import Budget from '../components/Budget';
 import BudgetList from '../components/BudgetList';
 
-export default function BudgetTab(navigation) {
+export default function BudgetTab() {
 
 
   const [newAmount, setAmount] = React.useState(0);

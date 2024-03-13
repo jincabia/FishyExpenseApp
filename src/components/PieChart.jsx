@@ -18,44 +18,33 @@ export default function FishyPieChart({ budgets }) {
    *  - styles
    * 
    *  Create a chart component?
-   *  
-   *  
-   *  
-   *  
    * 
    */
-  const data = [
-    {
-      name: "Nice",
-      population: 21500,
-      color: "rgba(131, 167, 234, 1)",
-      legendFontSize: 15
-    },
-    {
-      name: "Toronto",
-      population: 2800,
-      color: "#F00",
-      legendFontSize: 15
-    },
-    {
-      name: "Beijing",
-      population: 5276,
-      color: "red",
-      legendFontSize: 15
-    },
-    {
-      name: "New York",
-      population: 8538,
-      color: "#ffffff",
-      legendFontSize: 15
-    },
-    {
-      name: "Moscow",
-      population: 1192,
-      color: "rgb(0, 0, 255)",
-      legendFontSize: 15
-    }
-  ];
+
+  
+
+ const getRandomColor = () => {
+
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+ }
+
+const [budget, setBudgets] = React.useState(
+  [
+    {Name: "Food", Amount:1000,Color: getRandomColor()},
+    {Name: "Transportation", Amount:1000, Color: getRandomColor()},
+    {Name: "Housing", Amount:1000, Color: getRandomColor()},
+  ]
+);
+
+  const chartData = budget.map((item => ({
+    name: item.Name,
+    population: item.Amount,
+    color: item.Color,
+    legendFontSize: 15
+
+  })))
+
+ 
 
   const screenWidth = Dimensions.get("window").width - 50;
 
@@ -63,7 +52,7 @@ export default function FishyPieChart({ budgets }) {
 
   //I dont really know what this section does tbh
   const chartConfig = {
-    color: (opacity = 1) => `rgba(0,0,255, ${opacity})`,
+    color: (opacity = 1) => `rgba(0,255,255, ${opacity})`,
     strokeWidth: 3, // optional, default 3
     barPercentage: 0.3
   };
@@ -79,35 +68,36 @@ export default function FishyPieChart({ budgets }) {
 
             {/* https://www.npmjs.com/package/react-native-chart-kit took most of the code from this */}
           <PieChart
-            data={data}
+            data={chartData}
             width={screenWidth}
             height={320}
-            chartConfig={chartConfig}
             accessor={"population"}
             backgroundColor={"transparent"}
             paddingLeft={"0"}
             center={[80, 0]}
             hasLegend={false}
+            chartConfig={chartConfig}
             absolute
           />
-
-
-          
-          <View style={styles.legendContainer}>
-
-
-            {/* Legend with this mapping */}
-            {data.map((item, index) => (
-              <View key={index} style={styles.legendItem}>
-                <View style={[styles.legendColor, { backgroundColor: item.color }]} />
-                <Text>{item.name}</Text>
-              </View>
-
-            ))}
-          </View>
         </View>
+
+        <View style={styles.legendContainer}>
+
+
+{/* Legend with this mapping */}
+{chartData.map((item, index) => (
+  <View key={index} style={styles.legendItem}>
+    <View style={[styles.legendColor, { backgroundColor: item.color }]} />
+    <Text>{item.name}</Text>
+  </View>
+
+))}
+</View>
       </View>
     </MainLayout>
   );
 }
+
+
+
 

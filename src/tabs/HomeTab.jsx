@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import MainLayout from '../layout/Mainlayout';
 import FishyPieChart from '../components/PieChart';
 
-export default function HomeTab({ navigation }) {
+export default function HomeTab() {
 
   //TO DO
 
