@@ -21,22 +21,8 @@ export default function FishyPieChart({ budgets }) {
    * 
    */
 
-  
 
- const getRandomColor = () => {
-
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
- }
-
-const [budget, setBudgets] = React.useState(
-  [
-    {Name: "Food", Amount:1000,Color: getRandomColor()},
-    {Name: "Transportation", Amount:1000, Color: getRandomColor()},
-    {Name: "Housing", Amount:1000, Color: getRandomColor()},
-  ]
-);
-
-  const chartData = budget.map((item => ({
+  const chartData = budgets.map((item => ({
     name: item.Name,
     population: item.Amount,
     color: item.Color,
@@ -50,7 +36,6 @@ const [budget, setBudgets] = React.useState(
 
 
 
-  //I dont really know what this section does tbh
   const chartConfig = {
     color: (opacity = 1) => `rgba(0,255,255, ${opacity})`,
     strokeWidth: 3, // optional, default 3

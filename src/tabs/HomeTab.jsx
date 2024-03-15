@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import MainLayout from '../layout/Mainlayout';
 import FishyPieChart from '../components/PieChart';
 
-export default function HomeTab() {
+export default function HomeTab({budgets}) {
 
   //TO DO
 
@@ -30,7 +30,7 @@ export default function HomeTab() {
 
         {/* Pie Chart */}
         <View>
-          <FishyPieChart budgets={""}/>
+          <FishyPieChart budgets={budgets}/>
 
 
 

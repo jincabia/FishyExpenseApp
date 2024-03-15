@@ -1,25 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet,Button,TextInput,Alert } from 'react-native';
+import { View, Text, StyleSheet,Button,TextInput,Alert, ScrollView } from 'react-native';
 import MainLayout from '../layout/Mainlayout';
 import Budget from '../components/Budget';
 import BudgetList from '../components/BudgetList';
 
-export default function BudgetTab() {
+export default function BudgetTab({budgets, addBudget}) {
 
 
   const [newAmount, setAmount] = React.useState(0);
   const [newBudget, setNewBudgets] = React.useState("");
-  const [budget, setBudgets] = React.useState(
-    [
-      {Name: "Food", Amount:1000},
-      {Name: "Transportation", Amount:1000},
-      {Name: "Housing", Amount:1000},
-    ]
-  );
+  
 
   const handleChangeAmount = (numb) =>
   {
-    setAmount(numb);
+    setAmount(Number(numb));
   }
 
   const handleChangeText = (text) =>
@@ -28,36 +22,39 @@ export default function BudgetTab() {
   }
 
   const handlePress = () => {
-    handleAddBudget({Name: newBudget, Amount: newAmount});
+
+    addBudget({Name: newBudget, Amount: (newAmount), Color: "#FF3F0F"});
     setNewBudgets("");
     setAmount(0);
 
   };
-
-  const handleAddBudget = (newbudget) => {
-    setBudgets([...budget,newbudget]);
-  }
-
   return (
 
     
     <MainLayout>
-          <View >
-            <BudgetList budgets={budget}/>
+      <ScrollView>
+      <View >
+            <BudgetList budgets={budgets}/>
           </View>
+
+          {/* <Text>This is the amount rn. {newAmount} and also dt is {typeof(newAmount)}</Text> */}
 
           <View>
             <TextInput
+            
               placeholder="Add a name for the new budget..."
               onChangeText={handleChangeText}
               value={newBudget}/>
             <TextInput
+              keyboardType='numeric'
               placeholder="Add the total amount for this budget..."
               onChangeText={handleChangeAmount}
-              value={newAmount.toString()}/>
+              value={Number(newAmount)}/>
           
         <Button title="Add" onPress={handlePress} />
       </View>   
+      </ScrollView>
+          
     </MainLayout>
    
     
