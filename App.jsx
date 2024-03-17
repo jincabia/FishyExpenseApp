@@ -72,6 +72,7 @@ export default function App()
               tabBarTintColor: '#0079C1',  
               tabBarLabelStyle: {
                 fontSize: 14,
+                fontWeight: 'bold',
                 fontFamily: 'Inter', 
                 flex: 1,                                 
               }, 
