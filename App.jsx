@@ -54,6 +54,13 @@ export default function App()
     setBudgets([...budget,newbudget])
   }
 
+  //delete budget and edit budget
+
+  const deleteBudget = (nameToDelete) => {
+    const updatedBudgets = budget.filter(budgets => budgets.Name !== nameToDelete);
+    setBudgets(updatedBudgets);
+  }
+
 
 
 
@@ -61,10 +68,8 @@ export default function App()
   return(
     <NavigationContainer>
           <Tab.Navigator>
-              {/* <Tab.Screen name='Home' component = {HomeTab}/> */}
               <Tab.Screen name = 'Home' children ={()=><HomeTab  budgets={budget}/>}/>
-              {/* <Tab.Screen name='Budget' component = {BudgetTab}/> */}
-              <Tab.Screen name = 'Budget' children ={()=><BudgetTab  budgets={budget} addBudget={handleAddBudget}/>}/>
+              <Tab.Screen name = 'Budget' children ={()=><BudgetTab  budgets={budget} addBudget={handleAddBudget} delBudget={deleteBudget}/>}/>
 
               <Tab.Screen name='Expense' component = {ExpenseTab}/>
 

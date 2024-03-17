@@ -32,7 +32,7 @@ export default function FishyPieChart({ budgets }) {
 
  
 
-  const screenWidth = Dimensions.get("window").width - 50;
+  const screenWidth = Dimensions.get("window").width - 80;
 
 
 
@@ -42,13 +42,23 @@ export default function FishyPieChart({ budgets }) {
     barPercentage: 0.3
   };
 
+
+  if (chartData.length === 0) {
+    return (
+      <MainLayout>
+        <Text>No Budgets available for a pie chart</Text>
+      </MainLayout>
+    );
+  }
+
   return (
     <MainLayout>
 
 
       <View style={styles.container}>
         <Text>Budget Distribution</Text>
-        <View style={{ alignItems: 'center' }}>
+        
+        <View style={{ alignItems: 'center', backgroundColor: 'rgba(169, 169, 169, 0.5)' }}>
 
 
             {/* https://www.npmjs.com/package/react-native-chart-kit took most of the code from this */}
@@ -69,15 +79,15 @@ export default function FishyPieChart({ budgets }) {
         <View style={styles.legendContainer}>
 
 
-{/* Legend with this mapping */}
-{chartData.map((item, index) => (
-  <View key={index} style={styles.legendItem}>
-    <View style={[styles.legendColor, { backgroundColor: item.color }]} />
-    <Text>{item.name}</Text>
-  </View>
+          {/* Legend with this mapping */}
+          {chartData.map((item, index) => (
+            <View key={index} style={styles.legendItem}>
+              <View style={[styles.legendColor, { backgroundColor: item.color }]} />
+              <Text>{item.name}</Text>
+            </View>
 
-))}
-</View>
+              ))}
+          </View>
       </View>
     </MainLayout>
   );

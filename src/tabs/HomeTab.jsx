@@ -24,10 +24,6 @@ export default function HomeTab({budgets}) {
    */
     return (
       <MainLayout>
-
-        <Text>Home Page</Text>
-
-
         {/* Pie Chart */}
         <View>
           <FishyPieChart budgets={budgets}/>
@@ -41,3 +37,17 @@ export default function HomeTab({budgets}) {
     );
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+  },
+  bigBlue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
+  },
+});

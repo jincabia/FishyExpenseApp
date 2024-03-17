@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     legendContainer: {
+      marginTop: 20,
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'flex-start',

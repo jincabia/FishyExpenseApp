@@ -13,14 +13,14 @@ import Budget from './Budget';
 import MainLayout from '../layout/Mainlayout';
 
 
-export default function BudgetList({budgets}){
+export default function BudgetList({budgets, delBudget}){
 
     
     return(
         <SafeAreaView>
              {budgets.map((budget, index) => ( 
                 <View key={index}>
-                    <Budget Name={budget.Name} Amount={budget.Amount} /> 
+                    <Budget Name={budget.Name} Amount={budget.Amount} delBudget={delBudget} /> 
                 </View>
             ))}
         </SafeAreaView>

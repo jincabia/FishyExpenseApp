@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import OutlineLayout from '../layout/outlinelayout';
 
-export default function Budget({Name, Amount}){
+export default function Budget({Name, Amount, delBudget}){
     return(
         <OutlineLayout>
 
@@ -16,6 +16,11 @@ export default function Budget({Name, Amount}){
             <Text>
 
             </Text>
+
+            <Button
+        title="Delete"
+        onPress={() => delBudget(Name)}
+      />
         </View>
 
         </OutlineLayout>
