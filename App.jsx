@@ -22,6 +22,8 @@ import SettingsTab from './src/tabs/SettingsTab';
 
 
 const Tab = createBottomTabNavigator();
+// const Stack = createStackNavigator();
+
 
 import {
   Colors,
@@ -76,6 +78,8 @@ export default function App()
               <Tab.Screen name='Settings' component = {SettingsTab}/>
 
           </Tab.Navigator>
+
+          
     </NavigationContainer>
     
   );

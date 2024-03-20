@@ -1,108 +1,77 @@
-import React from 'react';
-import { View, Text, StyleSheet,Button,TextInput,Alert, ScrollView } from 'react-native';
+import React  from 'react';
+import { View, ScrollView, TextInput,Text } from 'react-native';
 import MainLayout from '../layout/Mainlayout';
-import Budget from '../components/Budget';
 import BudgetList from '../components/BudgetList';
-import { SelectList } from 'react-native-dropdown-select-list'
+import AddBudgetForm from '../components/addBudget';
 
 export default function BudgetTab({budgets, addBudget, delBudget}) {
 
-
-  const [newAmount, setAmount] = React.useState(0);
-  const [newBudget, setNewBudgets] = React.useState("");
-
-  const [selected, setSelected] = React.useState("");
-
-  const colors = [
-    { key: '0', value: 'Select Color', disabled: true }, // Grayed-out option
-    { key: '1', value: 'red' },
-    { key: '2', value: 'blue' },
-    { key: '3', value: 'green' },
-    { key: '4', value: 'orange' },
-    { key: '5', value: 'purple' },
-  ];
+  const [income, setIncome] = React.useState("");
   
 
-  const handleChangeAmount = (numb) =>
+  const HandleIncomeChange = (text) =>
   {
-    setAmount(Number(numb));
+    if (text.startsWith("$")) {
+      setIncome(text.substr(1));
+    } else {
+      setIncome(text);
+    }
   }
 
-  const handleChangeText = (text) =>
-  {
-    setNewBudgets(text);
-  }
-
-  const handlePress = () => {
 
 
-    if( newBudget == "" || newAmount == "")
-    {
-      Alert.alert("Please check for all fields");
-      return;
-    }
+  
 
-    if(typeof(newAmount) != number) 
-    {
-      Alert.alert("Please enter a valid number for amount");
-      return;
-    }
-
-    // if (!newBudget || !newAmount || !selected) {
-    //   // Show an alert or other feedback to indicate that all fields are required
-    //   Alert.alert("All fields are required!");
-    //   return; // Exit the function early if any field is empty
-    // }
-
-
-    
-
-    addBudget({Name: newBudget, Amount: Number(newAmount), Color: selected});
-    setNewBudgets("");
-    setAmount('');
-    
-
-  };
   return (
 
     
     <MainLayout>
       <ScrollView>
+
+        
+
+      <View style={{flex:1,
+                        paddingHorizontal:5,
+                        marginBottom:20,
+                        flexDirection:'row',
+                        alignItems: 'center', // Align items vertically in the center
+                        justifyContent: 'space-between', // Distribute items along the main axis with space between
+                        borderWidth:1,
+                        borderRadius:5,
+                        borderColor:'black',
+                        
+                        }}>
+      <Text style={{fontWeight: 'bold',
+                          color: 'black'}}>Income</Text>
+
+      {/* Input for Income */}
+      <TextInput
+      style={{alignSelf:'flex-end',
+      textAlign: 'right',
+      textDecorationLine: 'underline'}}
+
+      placeholder="Enter Your Income"
+      onChangeText={HandleIncomeChange}
+              value={"$" + income}/>
+      
+      
+      
+
+      </View>
       <View >
             <BudgetList budgets={budgets} delBudget={delBudget}/>
           </View>
 
-          <Text>This is the amount rn. {newAmount} and also dt is {typeof(newAmount)}</Text>
-
-          <View>
-            <TextInput
-            
-              placeholder="Add a name for the new budget..."
-              onChangeText={handleChangeText}
-              value={newBudget}/>
+          {/* <Text>This is the amount rn. {newAmount} and also dt is {typeof(newAmount)}</Text> */}
 
 
-            {/* Amount  */}
-            <TextInput
-            required
-              keyboardType='numeric'
-              placeholder="Add the total amount for this budget..."
-              onChangeText={setAmount}
-              value={(newAmount.toString())}/>
-
-
-
-            {/* Color Selector */}
-            <SelectList 
-            placeholder = "Select Color"
-                    setSelected={(val) => setSelected(val)} 
-                    data={colors} 
-                    save="value"
-                />
           
-        <Button title="Add" onPress={handlePress} />
+        {/* <Button title="Add" onPress={handlePress} /> */}
 
-        
+
+        <View>
+          <AddBudgetForm addBudget={addBudget}/>
+          
       </View>   
       </ScrollView>
           

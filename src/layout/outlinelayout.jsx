@@ -14,8 +14,13 @@ const styles = StyleSheet.create({
   outline: {
     borderWidth: 1,
     borderColor: 'black',
-    padding: 10,
+    marginBottom:5,
+    borderRadius: 4,
   },
+
+  container: {
+    
+  }
 });
 
 export default OutlineLayout;
