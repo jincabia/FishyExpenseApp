@@ -1,0 +1,92 @@
+const [newAmount, setAmount] = React.useState(0);
+  const [newBudget, setNewBudgets] = React.useState("");
+  const [selected, setSelected] = React.useState("");
+
+  //color options
+  const colors = [
+    { key: '0', value: 'Select Color', disabled: true }, // Grayed-out option
+    { key: '1', value: 'red' },
+    { key: '2', value: 'blue' },
+    { key: '3', value: 'green' },
+    { key: '4', value: 'orange' },
+    { key: '5', value: 'purple' },
+  ];
+  
+
+  const handleChangeAmount = (numb) =>
+  {
+
+    setAmount((numb));
+  }
+
+  const handleChangeText = (text) =>
+  {
+    setNewBudgets(text);
+  }
+
+  const handlePress = () => {
+
+
+
+    //I used ChatGPT and Stackoverflow for regex
+
+    const regex = /^\d+(\.\d+)?$/;
+
+    if(newAmount == '0' || newAmount == ''|| !regex.test(newAmount)) 
+    {
+      Alert.alert("Please enter a valid Amount for the budget")
+      return;
+    }
+
+
+
+
+    if( newBudget == "")
+    {
+      Alert.alert("Please Enter a name for the budget");
+      return;
+    }
+
+    
+    addBudget({Name: newBudget, Amount: Number(newAmount), Color: selected});
+    setNewBudgets("");
+    setAmount('');
+    
+
+  };
+
+
+<View>
+<TextInput
+
+  placeholder="Add a name for the new budget..."
+  onChangeText={handleChangeText}
+  value={newBudget}/>
+
+
+{/* Amount  */}
+<TextInput
+required
+  keyboardType='numeric'
+  placeholder="Add the total amount for this budget..."
+  onChangeText={handleChangeAmount}
+  value={(newAmount)}/>
+
+
+
+{/* Color Selector */}
+<SelectList 
+placeholder = "Select Color"
+        setSelected={(val) => setSelected(val)} 
+        data={colors} 
+        save="value"
+    />
+
+<Button title="Add" onPress={handlePress} />
+
+
+
+
+
+
+</View> 
