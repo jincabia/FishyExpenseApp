@@ -18,11 +18,18 @@ export default function BudgetList({budgets, delBudget}){
     
     return(
         <SafeAreaView>
-             {budgets.map((budget, index) => ( 
-                <View key={index}>
-                    <Budget Name={budget.Name} Amount={budget.Amount} delBudget={delBudget} /> 
-                </View>
-            ))}
-        </SafeAreaView>
+      {budgets.length === 0 ? (
+        <Text style={{paddingBottom:5,
+                    fontWeight:'bold'}}>No budgets currently, enter budget</Text>
+      ) : (
+        <ScrollView>
+          {budgets.map((budget, index) => (
+            <View key={index}>
+              <Budget Name={budget.Name} Amount={budget.Amount} delBudget={delBudget} />
+            </View>
+          ))}
+        </ScrollView>
+      )}
+    </SafeAreaView>
     );
 }

@@ -62,11 +62,9 @@ export default function BudgetTab({budgets, addBudget, delBudget}) {
             <BudgetList budgets={budgets} delBudget={delBudget}/>
           </View>
 
-          {/* <Text>This is the amount rn. {newAmount} and also dt is {typeof(newAmount)}</Text> */}
-
-
           
-        {/* <Button title="Add" onPress={handlePress} /> */}
+
+
 
 
         <View>

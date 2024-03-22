@@ -76,15 +76,45 @@ export default function AddBudgetForm({ addBudget})
 
           {/* <Text>This is the amount rn. {newAmount} and also dt is {typeof(newAmount)}</Text> */}
 
-          <View>
-            <TextInput
+          <View style={{borderWidth: 1,
+              borderColor:'Black',
+              borderRadius:4,
+              padding:8,
+              backgroundColor:'#77889999',}}>
+
+            <View style=
+            {{marginBottom:3,
+              borderWidth:2,
+              borderColor:'black',
+              backgroundColor:'white',
+              borderRadius:4,
+              
             
+            
+            
+            }}>
+              <TextInput
+              
               placeholder="Add a name for the new budget..."
               onChangeText={handleChangeText}
               value={newBudget}/>
 
+            </View>
+            
+            
+            <View style=
+            {{marginBottom:3,
+              borderWidth:2,
+              borderColor:'black',
+              backgroundColor:'white',
+              borderRadius:4,
+              
+            
+            
+            
+            }}>
 
-            {/* Amount  */}
+              {/* Amount  */}
             <TextInput
             required
               keyboardType='numeric'
@@ -93,14 +123,31 @@ export default function AddBudgetForm({ addBudget})
               value={(newAmount.toString())}/>
 
 
+            </View>
 
-            {/* Color Selector */}
+            
+              
+            <View style=
+            {{marginBottom:7,
+              
+            
+            
+            
+            }}>
+               {/* Color Selector */}
             <SelectList 
             placeholder = "Select Color"
                     setSelected={(val) => setSelected(val)} 
                     data={colors} 
                     save="value"
+                    dropdownStyles={{backgroundColor:'white'}}
+                    boxStyles={{backgroundColor:'white',borderWidth:2,borderColor:'black'}}
                 />
+
+            </View>
+
+
+           
           
         <Button title="Add" onPress={handlePress} />
 
