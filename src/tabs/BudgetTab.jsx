@@ -2,7 +2,6 @@ import React  from 'react';
 import { View, ScrollView, TextInput,Text,Button } from 'react-native';
 import MainLayout from '../layout/Mainlayout';
 import BudgetList from '../components/BudgetList';
-import AddBudgetForm from '../components/addBudget';
 import { useNavigation } from '@react-navigation/native';
 
 export default function BudgetTab({budgets,delBudget}) {
