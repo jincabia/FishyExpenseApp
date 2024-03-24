@@ -7,6 +7,7 @@ export default function AddBudgetForm({ addBudget})
 {
 
 
+  //maybe just an add success 
 
   const [newAmount, setAmount] = React.useState(0);
   const [newBudget, setNewBudgets] = React.useState("");
@@ -36,7 +37,7 @@ export default function AddBudgetForm({ addBudget})
 
   const handlePress = () => {
 
-    if(newAmount == '' || newAmount == "") 
+    if(newAmount == '' || newAmount == "" || newAmount.toString().charAt(0) == '0') 
     {
       Alert.alert("Please enter a valid Amount for the budget")
       return;
