@@ -50,7 +50,6 @@ export default function App()
       {Name: "Food", Amount:1000,Color: 'red'},
       {Name: "Transportation", Amount:400, Color: 'green'},
       {Name: "Housing", Amount:10000, Color: 'blue'},
-      {Name: "Nice", Amount: 4000,Color: 'purple'},
     ]
   );
 
@@ -74,7 +73,7 @@ export default function App()
     return (
       <AddBudgetStack.Navigator>
 
-                <AddBudgetStack.Screen name = 'Budget' children ={()=><BudgetTab  budgets={budget} addBudget={handleAddBudget} delBudget={deleteBudget}/>}/>
+                <AddBudgetStack.Screen name = 'Budget Home tab' children ={()=><BudgetTab  budgets={budget} addBudget={handleAddBudget} delBudget={deleteBudget}/>}/>
                 <AddBudgetStack.Screen name='AddBudget' options={{title: 'Add a Budget'}} children ={()=><AddBudgetTab   addBudget={handleAddBudget}/>} />
       </AddBudgetStack.Navigator>
     );
