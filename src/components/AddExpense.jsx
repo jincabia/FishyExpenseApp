@@ -1,53 +1,99 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Button, Divider } from 'react-native-elements';
 import { Component } from 'react';
+import SelectDropdown from 'react-native-select-dropdown';
 
 
-export default class AddExpense extends Component {
-  render() {
-    return (
-      <SafeAreaView style={[styles.container]}>
 
-        <View style={[styles.inner]}>
+const AddExpense = () => {
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const categories = [
+    { key: '1', value: 'Groceries' },
+    { key: '2', value: 'Rent' },
+    { key: '3', value: 'Utilities' },
+    { key: '4', value: 'Entertainment' }
+  ];
+
+  const handleCategorySelect = (selectedItem, index) => {
+    setSelectedCategory(selectedItem.value);
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.inner}>
         <Text style={styles.title}>Title</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
+        <TextInput style={styles.input} />
+      </View>
 
-        <View style={[styles.inner]}>
+      <View style={styles.inner}>
         <Text style={styles.title}>Account</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
+        <TextInput style={styles.input} />
+      </View>
 
-        <View style={[styles.inner]}>
+      <View style={styles.inner}>
         <Text style={styles.title}>Date</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
+        <TextInput style={styles.input} />
+      </View>
 
-        <View style={[styles.inner]}>
+      <View style={styles.inner}>
         <Text style={styles.title}>Description</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
+        <TextInput style={styles.input} />
+      </View>
 
-        <View style={[styles.inner]}>
+      <View style={styles.inner}>
         <Text style={styles.title}>Category</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
+        <SelectDropdown
+          data={categories}
+          onSelect={handleCategorySelect}
+          defaultButtonText="Select category"
+          buttonTextAfterSelection={(selectedItem, index) => selectedItem.value}
+          rowTextForSelection={(item, index) => item.value}
+          buttonStyle={styles.dropdownButton}
+          buttonTextStyle={styles.dropdownButtonText}
+          renderDropdownIcon={(isOpened) => <Text>{isOpened ? '▲' : '▼'}</Text>}
+          dropdownIconPosition="right"
+          dropdownStyle={styles.dropdownStyle}
+          rowStyle={styles.dropdownRow}
+          rowTextStyle={styles.dropdownRowText}
+        />
+      </View>
 
-        <View style={[styles.confirmView]}>
+      <View style={styles.confirmView}>
         <Pressable style={styles.button}>
-                        <Text style={styles.text}>Confirm</Text>
-                        </Pressable>
-        </View>
-
-
-      </SafeAreaView>
-    )
-  }
-}
+          <Text style={styles.text}>Confirm</Text>
+        </Pressable>
+      </View>
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
+  dropdownButton: {
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 5,
+    width: '100%',
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    backgroundColor: 'white',
+  },
+  dropdownButtonText: {
+    textAlign: 'left',
+    fontSize: 16,
+  },
+  dropdownStyle: {
+
+  },
+  dropdownRow: {
+
+  },
+  dropdownRowText: {
+    fontSize: 16,
+    textAlign: 'left',
+  },
     confirmView:{
         marginTop: 80,
         alignItems: 'center',
@@ -95,4 +141,6 @@ const styles = StyleSheet.create({
         margin: 10,
         padding: 0,
     },
-})
+});
+
+export default AddExpense;

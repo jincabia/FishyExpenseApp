@@ -1,62 +1,47 @@
 import React from 'react';
-import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList} from 'react-native';
+import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Button, Divider } from 'react-native-elements';
 import { Component } from 'react';
 
 
-export default class ExpenseDetail extends Component {
+export default class AddSuccess extends Component {
   render() {
     return (
-        <SafeAreaView style={[styles.container]}>
-
-        <View style={[styles.detailView]}>
-        <Text style={styles.title}>Title</Text>
-        <Text style={styles.title1}>NULL</Text>
-        </View>
-
-        <View style={[styles.detailView]}>
-        <Text style={styles.title}>Amount</Text>
-        <Text style={styles.title}>$</Text>
-        <Text style={styles.title1}>NULL</Text>
-        </View>
-
-        <View style={[styles.detailView]}>
-        <Text style={styles.title}>Date</Text>
-        <Text style={styles.title1}>NULL</Text>
-        </View>
-
-        <View style={[styles.detailView]}>
-        <Text style={styles.title}>Description</Text>
-        <Text style={styles.title1}>NULL</Text>
-        </View>
-
-        <View style={[styles.detailView]}>
-        <Text style={styles.title}>Date</Text>
-        <Text style={styles.title1}>NULL</Text>
-        </View>
-
-        <View style={[styles.confirmView]}>
-
+      <SafeAreaView style={styles.container}>
+        <View style={styles.inner}>
+        <Image source={require('./img/success.png')} style={styles.image}></Image>
+        <Text style={styles.title}>Submitted Successfully</Text>
+        <Text style={styles.detailText}>You have successfully submitted your expense and stored in the local file</Text>
         <Pressable style={styles.button}>
-        <Text style={styles.text}>Edit</Text>
-        <Icon name="edit" size={24} color="white" style={[styles.icon]}/>
+        <Text style={styles.text}>View Expense Details</Text>
         </Pressable>
 
         <Pressable style={styles.button1}>
-        <Text style={styles.text}>Delete</Text>
-        <Icon name="delete" size={24} color="white" style={[styles.icon]}  />
-
+        <Text style={styles.text1}>Return to Dashboard</Text>
         </Pressable>
         </View>
 
-
-        </SafeAreaView>
+      </SafeAreaView>
     )
   }
 }
 
 const styles = StyleSheet.create({
+    detailText:{
+        fontSize:15,
+        color: 'grey',
+        textAlign: 'center',
+        marginBottom:20,
+    },
+    image:{
+        marginTop: 100,
+        height: 200,
+        width: 200,
+        marginBottom: 10,
+        //marginVertical:20,
+        //resizeMode: 'stretch',
+    },
     icon:{
         paddingLeft: 5,
     },
@@ -66,7 +51,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 6,
         elevation: 3,
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         width:300,
         height: 50,
         flexDirection: 'row',
@@ -75,13 +60,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    title1: {
-        fontSize: 18,
-        paddingTop: 0,
-        paddingBottom: 10,
-        color: 'black',    
-        marginLeft: 15,
     },
     detailView:{
         margin: 5,
@@ -109,6 +87,13 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: 'white',
       },
+    text1: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'blue',
+    },
     container:{
         flex: 1,
         margin: 0,
@@ -124,7 +109,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     title: {
-        fontSize: 18,
+        fontSize: 25,
         paddingTop: 0,
         paddingBottom: 10,
         color: 'black',
@@ -134,5 +119,8 @@ const styles = StyleSheet.create({
     inner: {
         margin: 10,
         padding: 0,
+        justifyContent: 'center',
+        alignItems:'center'
     },
 })
+
