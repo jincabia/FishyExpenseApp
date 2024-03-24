@@ -76,25 +76,18 @@ export default function AddBudgetForm({ addBudget})
 
           {/* <Text>This is the amount rn. {newAmount} and also dt is {typeof(newAmount)}</Text> */}
 
-          <View style={{borderWidth: 1,
-              borderColor:'Black',
-              borderRadius:4,
-              padding:8,
-              backgroundColor:'#77889999',}}>
+          <View>
 
             <View style=
             {{marginBottom:3,
-              borderWidth:2,
-              borderColor:'black',
-              backgroundColor:'white',
-              borderRadius:4,
-              
-            
             
             
             }}>
+
+
+              <Text style={{color:'black'}}>Enter Budget Name</Text>
               <TextInput
-              
+              style={{borderWidth:2, backgroundColor:'white',borderRadius:6}}
               placeholder="Add a name for the new budget..."
               onChangeText={handleChangeText}
               value={newBudget}/>
@@ -104,19 +97,18 @@ export default function AddBudgetForm({ addBudget})
             
             <View style=
             {{marginBottom:3,
-              borderWidth:2,
-              borderColor:'black',
-              backgroundColor:'white',
-              borderRadius:4,
               
             
             
             
             }}>
+              <Text style={{color:'black'}}>Enter Budget Amount</Text>
 
               {/* Amount  */}
             <TextInput
             required
+            style={{borderWidth:2, backgroundColor:'white',borderRadius:6}}
+
               keyboardType='numeric'
               placeholder="Add the total amount for this budget..."
               onChangeText={handleChangeAmount}
@@ -134,7 +126,11 @@ export default function AddBudgetForm({ addBudget})
             
             
             }}>
+                            <Text style={{color:'black'}}>Select a Color</Text>
+
+              
                {/* Color Selector */}
+
             <SelectList 
             placeholder = "Select Color"
                     setSelected={(val) => setSelected(val)} 
