@@ -2,9 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet,Button,TextInput,Alert, ScrollView } from 'react-native';
 import MainLayout from '../layout/Mainlayout';
 import { SelectList } from 'react-native-dropdown-select-list'
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function AddBudgetForm({ addBudget})
 {
+  const navigation = useNavigation();
+
 
 
   //maybe just an add success 
@@ -42,6 +46,11 @@ export default function AddBudgetForm({ addBudget})
       Alert.alert("Please enter a valid Amount for the budget")
       return;
     }
+    else if (selected == null || selected =="")
+    {
+      Alert.alert("Please select a valid option for the color")
+      return;
+    }
     else
     {
         const regex = /^\d+(\.\d+)?$/;
@@ -66,6 +75,8 @@ export default function AddBudgetForm({ addBudget})
     addBudget({Name: newBudget, Amount: Number(newAmount), Color: selected});
     setNewBudgets("");
     setAmount('');
+    //
+    navigation.navigate('Success')
     
 
   };
