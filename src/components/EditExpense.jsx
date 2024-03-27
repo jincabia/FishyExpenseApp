@@ -1,88 +1,74 @@
 import React, { useState } from 'react';
-import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList, Alert} from 'react-native';
+import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Button, Divider } from 'react-native-elements';
 import { Component } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRoute } from '@react-navigation/native';
 import Storage from './Storage';
-import uuid from 'react-native-uuid';
 
 
-const AddExpense = () => {
+
+const EditExpense = () => {
+  const route = useRoute();
+  const { objectItem } = route.params;
+  const [title, setTitle] = useState(objectItem.title); 
+  const [amount, setAmount] = useState(objectItem.amount);
+  const [date, setDate] = useState(objectItem.date);
+  const [category, setCategory] = useState(objectItem.category);
+  const [description, setDescription] = useState(objectItem.description);
+  const [id, setId] = useState(objectItem.id);
 
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [title, setTitle] = useState(''); 
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
-  const [category, setCategory] = useState('');
-  const [description, setDescription] = useState('');
-  const [id, setId] = useState(uuid.v4());
-
+  const navigation = useNavigation()
   const categories = [
     { key: '1', value: 'Groceries' },
     { key: '2', value: 'Rent' },
     { key: '3', value: 'Utilities' },
     { key: '4', value: 'Entertainment' }
   ];
+  const categoryIndex = () => {
+    if(category === 'Groceries'){
+      return 0;
+    }
+    if(category === 'Rent'){
+      return 1;
+    }
+    if(category === 'Utilities'){
+      return 2;
+    }
+    if(category === 'Entertainment'){
+      return 3;}
+      
+  };
 
   const handleCategorySelect = (selectedItem, index) => {
     setSelectedCategory(selectedItem.value);
+    setCategory(selectedItem.value)
   };
-  const navigation = useNavigation()
-  const dataToPass = { title: title, amount: amount, date:date, description: description, category: selectedCategory, id: id};
-  const passData = () => {
-    navigation.navigate('AddSuccessPage', { data: dataToPass });
-  };
-
-
-  const DATA = {
+  const dataToPass = { title: title, amount: amount, date:date, description: description, category: category, id: id};
+  const updatedData = {
     id: id,
     title: title,
     amount: amount,
     date: date,
-    category: selectedCategory,
+    category: category,
     description: description,
   };
-  
-  const addData = async () => {
+  const passData = async () => {
     try {
-      if (title !== '' && amount !== '' && date !== '' && selectedCategory !== '' && description !== '') {
-        const DATA = {
-          id: id,
-          title: title,
-          amount: amount,
-          date: date,
-          category: selectedCategory,
-          description: description,
-        };
-        await Storage.set(id, DATA);
-        setId(uuid.v4());
-        passData();
-      } else {
-        Alert.alert('Please fill out all the components!');
-      }
+      await Storage.update(id, updatedData);
+      navigation.navigate('AddSuccessPage', { data: dataToPass });
     } catch (error) {
-
+      console.error('Error updating data:', error);
     }
   };
-
-  const getData = async () => {
-    try {
-      const value = await Storage.get(id);
-      if (value !== null) {
-        console.log(value); 
-      }
-    } catch (error) {
-
-    }
-  };
-
   
+
   return (
     <SafeAreaView style={styles.container}>
-            <View style={styles.inner}>
+      <View style={styles.inner}>
         <Text style={styles.title}>Title</Text>
         <TextInput style={styles.input} value={title} onChangeText={setTitle}/>
       </View>
@@ -107,7 +93,7 @@ const AddExpense = () => {
         <SelectDropdown
           data={categories}
           onSelect={handleCategorySelect}
-          defaultButtonText="Select category"
+          defaultValueByIndex={categoryIndex()}
           buttonTextAfterSelection={(selectedItem, index) => selectedItem.value}
           rowTextForSelection={(item, index) => item.value}
           buttonStyle={styles.dropdownButton}
@@ -121,11 +107,10 @@ const AddExpense = () => {
       </View>
 
       <View style={styles.confirmView}>
-        <Pressable style={styles.button} onPress={() => {
-          addData();
-          getData();
-        }}>
-          <Text style={styles.text}>Confirm</Text>
+      <Pressable style={styles.button} onPress={() => { 
+        passData()
+}}>
+          <Text style={styles.text}>Save</Text>
         </Pressable>
       </View>
     </SafeAreaView>
@@ -184,15 +169,15 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     input:{
-        width: 390,
-        height: 40,
-        margin: 2,
-        borderWidth:1,
-        flexDirection: 'row',
-        borderColor: 'gray',
-        backgroundColor: 'white',
-        borderRadius: 4,
-        fontSize: 17,
+      width: 390,
+      height: 40,
+      margin: 2,
+      borderWidth:1,
+      flexDirection: 'row',
+      borderColor: 'gray',
+      backgroundColor: 'white',
+      borderRadius: 4,
+      fontSize: 17,
     },
     title: {
         fontSize: 15,
@@ -207,4 +192,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AddExpense;
+export default EditExpense;

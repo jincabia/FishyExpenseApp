@@ -22,12 +22,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     padding: 10,
   },
-
-  budgetName:{
-    fontSize:20,
-    fontWeight:'bold'
-  }
-
 });
 
 export default MainLayout;

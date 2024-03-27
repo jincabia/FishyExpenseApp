@@ -3,29 +3,37 @@ import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions,
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Button, Divider } from 'react-native-elements';
 import { Component } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 
 
-export default class AddSuccess extends Component {
-  render() {
+export default AddSuccess = () => {
+    const route = useRoute();
+    const { data } = route.params;
+    const navigation = useNavigation()
+    const passData = () => {
+      navigation.navigate('ExpenseDetailPage', {objectItem: data} );
+    };
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.inner}>
         <Image source={require('./img/success.png')} style={styles.image}></Image>
-        <Text style={styles.title}>Submitted Successfully</Text>
-        <Text style={styles.detailText}>You have successfully submitted your expense and stored in the local file</Text>
-        <Pressable style={styles.button}>
+        <Text style={styles.title}>Modified Successfully</Text>
+        <Text style={styles.detailText}>You have successfully modified your expense and stored in the local file</Text>
+        <Pressable style={styles.button} onPress={passData}>
         <Text style={styles.text}>View Expense Details</Text>
         </Pressable>
 
-        <Pressable style={styles.button1}>
+        <Pressable style={styles.button1} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.text1}>Return to Dashboard</Text>
         </Pressable>
         </View>
 
       </SafeAreaView>
     )
-  }
 }
+    
+
 
 const styles = StyleSheet.create({
     detailText:{
@@ -33,6 +41,7 @@ const styles = StyleSheet.create({
         color: 'grey',
         textAlign: 'center',
         marginBottom:20,
+        paddingHorizontal: 30,
     },
     image:{
         marginTop: 100,
