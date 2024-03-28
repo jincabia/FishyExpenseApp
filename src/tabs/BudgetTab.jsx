@@ -27,7 +27,7 @@ export default function BudgetTab({budgets,delBudget}) {
         
 
       <View style={{flex:1,
-                        paddingHorizontal:5,
+                        paddingHorizontal:50,
                         marginBottom:20,
                         flexDirection:'row',
                         alignItems: 'center', // Align items vertically in the center
@@ -35,6 +35,7 @@ export default function BudgetTab({budgets,delBudget}) {
                         borderWidth:1,
                         borderRadius:5,
                         borderColor:'black',
+
                         
                         }}>
       <Text style={{fontWeight: 'bold',

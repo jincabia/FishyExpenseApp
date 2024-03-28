@@ -24,7 +24,7 @@ import ExpenseTab from './src/tabs/ExpenseTab';
 import SettingsTab from './src/tabs/SettingsTab';
 
 import AddBudgetTab from './src/tabs/AddBudgetTab';
-
+import AddSuccess from './src/components/AddSucessBudget';
 
 const Tab = createBottomTabNavigator();
 
@@ -56,7 +56,7 @@ export default function App()
   const handleAddBudget = (newbudget) =>
   {
     setBudgets([...budget,newbudget])
-    Alert.alert("Budget Sucessfully Added")
+    // Alert.alert("Budget Sucessfully Added")
     
   }
 
@@ -75,6 +75,8 @@ export default function App()
 
                 <AddBudgetStack.Screen name = 'Budget Home tab' children ={()=><BudgetTab  budgets={budget} addBudget={handleAddBudget} delBudget={deleteBudget}/>}/>
                 <AddBudgetStack.Screen name='AddBudget' options={{title: 'Add a Budget'}} children ={()=><AddBudgetTab   addBudget={handleAddBudget}/>} />
+                <AddBudgetStack.Screen name='Success' options={{title: 'Budget Successfully Added'}} children ={()=><AddSuccess/>} />
+
       </AddBudgetStack.Navigator>
     );
   }
