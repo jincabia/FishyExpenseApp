@@ -13,3 +13,14 @@ export default function SettingsTab({ navigation }) {
   );
 }
 
+function ExpenseStackNavigator() {
+  return (
+    <Stack.Navigator initialRouteName='ExpensePage' screenOptions={{headerShown: false}}>
+      <Stack.Screen name="ExpensePage" component={Expense} />
+      <Stack.Screen name="AddExpensePage" component={AddExpense} />
+      <Stack.Screen name="ExpenseDetailPage" component={ExpenseDetail} />
+      <Stack.Screen name="AddSuccessPage" component={AddSuccess} />
+      <Stack.Screen name="EditExpensePage" component={EditExpense} />
+    </Stack.Navigator>
+  );
+}
