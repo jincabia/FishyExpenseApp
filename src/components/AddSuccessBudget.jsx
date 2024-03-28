@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-export default function AddSuccess() {
+export default function AddSuccessBudget() {
  
     const navigation = useNavigation();
 

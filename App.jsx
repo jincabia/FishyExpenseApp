@@ -20,13 +20,18 @@ import Icon from 'react-native-vector-icons/FontAwesome6';
 
 import HomeTab from './src/tabs/HomeTab';
 import BudgetTab from './src/tabs/BudgetTab';
-import ExpenseTab from './src/tabs/ExpenseTab';
+import Expense from './src/components/Expense';
 import SettingsTab from './src/tabs/SettingsTab';
 
 import AddBudgetTab from './src/tabs/AddBudgetTab';
-import AddSuccess from './src/components/AddSucessBudget';
+import AddSuccess from './src/components/AddSuccessBudget';
+import ExpenseDetail from './src/components/ExpenseDetail';
+import AddExpense from './src/components/AddExpense';
+import EditExpense from './src/components/EditExpense';
+
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 
 
@@ -81,6 +86,18 @@ export default function App()
     );
   }
 
+  function ExpenseStackNavigator() {
+    return (
+      <Stack.Navigator initialRouteName='ExpensePage' screenOptions={{headerShown: false}}>
+        <Stack.Screen name="ExpensePage" component={Expense} />
+        <Stack.Screen name="AddExpensePage" component={AddExpense} />
+        <Stack.Screen name="ExpenseDetailPage" component={ExpenseDetail} />
+        <Stack.Screen name="AddSuccessPage" component={AddSuccess} />
+        <Stack.Screen name="EditExpensePage" component={EditExpense} />
+      </Stack.Navigator>
+    );
+  }
+
 
 
 
@@ -128,7 +145,7 @@ export default function App()
           >
               <Tab.Screen name = 'Home' children ={()=><HomeTab  budgets={budget}/>}/>
               <Tab.Screen name = 'Budget' options={{headerShown: false, unmountOnBlur: true}} component={AddBudgetStackScreen}/>
-              <Tab.Screen name='Expense' component = {ExpenseTab}/>
+              <Tab.Screen name='Expense' options={{headerShown: false, unmountOnBlur: true}} component={ExpenseStackNavigator}/>
               <Tab.Screen name='Settings' component = {SettingsTab}/>
           </Tab.Navigator>
 

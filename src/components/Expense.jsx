@@ -1,63 +1,96 @@
-import React from 'react';
 import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Button, Divider } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
+import MainLayout from '../layout/Mainlayout';
+import Storage from './Storage';
+import React, { useState, useEffect } from 'react';
+import { useIsFocused } from '@react-navigation/native';
 
-const DATA = [
-  {
-    id: '1',
-    title: 'Travel',
-    amount: '$270',
-    date: '12/12/2023',
-    category: 'Daily/Grocery',
-  },
-  ];
 
-const Item = ({ title, amount, date, category }) => (
-  <View style={styles.Item}>
-    <Text style={styles.title}>{title}</Text>
-    <Text style={styles.details}>{amount}</Text>
-    <View style={styles.searchArea}>
-    <Text style={styles.details}>{date} | {category}</Text>
-    <Icon size={24} style={styles.icon} name="edit" />
+export default function Expense( route ) {
+  const [data, setData] = useState([]);
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
+  const [searchText, setSearchText] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    getAllData();
+  }, [route.params?.refresh, isFocused]);
+
+  useEffect(() => {
+    setFilteredData(data.filter(item => {
+      return item.title.includes(searchText) ||
+             item.amount.includes(searchText) ||
+             item.date.includes(searchText) ||
+             item.category.includes(searchText);
+    }));
+  }, [searchText, data]);
+  
+  const getAllData = async () => {
+    try {
+      const storedData = await Storage.getAllData();
+      const formattedData = storedData.map(item => item.value);
+      setData(formattedData);
+      console.log(storedData)
+    } catch (error) {
+      console.error('Error getting all data:', error);
+    }
+  };
+
+  const handleSearch = () => {
+    setSearchText(tempSearchText);
+  };
+
+  const Item = ({ item }) => (
+    <View style={styles.Item}>
+      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.details}>{item.amount}</Text>
+      <View style={styles.searchArea}>
+        <Text style={styles.details}>{item.date} | {item.category}</Text>
+        <Pressable onPress={() => navigation.navigate('EditExpensePage', { objectItem: item })}>
+          <Icon size={30} style={styles.icon} name="edit" />
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate('ExpenseDetailPage', { objectItem: item })}>
+          <Icon size={30} style={styles.icon} name="details" />
+        </Pressable>
+      </View>
     </View>
-  </View>
-);
-
-export default function Expense(){
-
-  const renderItem = ({ item }) => (
-    <Item
-      title={item.title}
-      amount={item.amount}
-      date={item.date}
-      category={item.category}
-    />
   );
 
-return(
-    <SafeAreaView style={styles.container}> 
-        <View style={styles.inner}>  
-            <Text style={styles.title}>Recent Expense Record</Text>
-                <View style={styles.searchArea}>
-                    <TextInput style={styles.input} placeholder='Title/Amount/Date/Category'></TextInput>
-                    <Pressable style={styles.button}>
-                    <Text style={styles.text}>Search</Text>
-                    </Pressable>
-                </View>
-            <Divider style={styles.divider} ></Divider>
-            <FlatList
-      data={DATA}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-    />
-    <Pressable style={styles.addButton}>
-    <Text style={styles.text}>Add An Expense</Text>
-    </Pressable>
-    </View>
-      </SafeAreaView>              
-);
+  const renderItem = ({ item }) => (
+    <Item item={item} key={item.id}/>
+  );
+
+  return (
+    <MainLayout>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Recent Expense Record</Text>
+        <View style={styles.searchArea}>
+
+        <TextInput 
+            style={styles.input} 
+            placeholder='Title/Amount/Date/Category'
+            onChangeText={text => setSearchText(text)}
+            value={searchText}
+          />
+        <Icon size={35} style={styles.searchIcon} name="search" />
+        </View>
+        <Divider style={styles.divider} />
+        <FlatList
+          data={filteredData}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
+        <Pressable style={styles.addButton} onPress={() => navigation.navigate('AddExpensePage')}>
+          <Text style={styles.text}>Add An Expense</Text>
+        </Pressable>
+      </SafeAreaView>
+    </MainLayout>
+  );
 }
+
 
 const styles = StyleSheet.create({  
   addButton: {
@@ -75,10 +108,14 @@ const styles = StyleSheet.create({
     color: '#0079C1',
     paddingLeft: 5,
   },
+  searchIcon: {
+    color: 'grey',
+    marginTop: 16,
+  },
   details: {
     color: '#757575',
     fontSize: 18,
-  }, 
+  },  
   Item: {
     backgroundColor: 'white',
     padding: 20,
@@ -92,19 +129,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     input:{
-        width: 200,
+        width: 320,
         margin:10,
         borderWidth:1,
         flexDirection: 'row',
         borderColor: 'gray',
         backgroundColor: 'white',
+        fontSize: 16,
     },
-    
-    container: {
-        flex: 1,
-        margin: 0,
-        padding: 0,
-    }, 
+    container:{
+      flex: 1,
+      margin: 0,
+      padding: 0,
+  },
     inner: {
         flex: 1,
         minWidth: '100%',

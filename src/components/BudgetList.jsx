@@ -19,7 +19,7 @@ export default function BudgetList({budgets, delBudget}){
     return(
         <SafeAreaView>
       {budgets.length === 0 ? (
-        <Text style={{paddingBottom:5,
+        <Text style={{paddingBottom:5, 
                     fontWeight:'bold'}}>No budgets currently, enter budget</Text>
       ) : (
         <ScrollView>
