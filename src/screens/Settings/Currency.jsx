@@ -45,9 +45,10 @@ export default function Currency() {
   // get default currency from Async Storage
   const getStorage = async () => {
     try {
-      const fromCode = await AsyncStorage.getItem('fromCode');
-      const toCode = await AsyncStorage.getItem('toCode');
+      let fromCode = await AsyncStorage.getItem('fromCode');
+      let toCode = await AsyncStorage.getItem('toCode');
 
+      //console.log(fromCode);
       if (!fromCode) {fromCode = 'CAD';}
       if (!toCode) {toCode = 'CAD';}
 
