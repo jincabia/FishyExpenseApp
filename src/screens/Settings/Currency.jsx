@@ -111,27 +111,26 @@ export default function Currency() {
        <Text style={styles.item}>{toCurrency} {rate}</Text>           
        <Divider style={styles.divider} ></Divider>   
        <Text style={styles.title}>Select New Default Currency:</Text> 
-        {currencies.map((item)=> 
-        {return(
-          (toCurrency != item.code) ? 
-          <>
+       <>
             <View>
-              <Pressable style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
-                <Icon style={styles.iconsOff} name='radio-button-off' />
-                <Text style={styles.item}>{item.code} - {item.name} </Text>
-              </Pressable>
-            </View>
-          </> :
-          <>
-            <View>
-              <Pressable style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
-              <Icon style={styles.icons} name='radio-button-on' /> 
-              <Text style={styles.itemSelect}>{item.code} - {item.name} </Text>              
-              </Pressable>
-            </View>
-          </>          
-        )
-      })}
+            {currencies.map((item)=> 
+              {return(
+                (toCurrency != item.code) ? 
+                
+                    <Pressable style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
+                      <Icon style={styles.iconsOff} name='radio-button-off' />
+                      <Text style={styles.item}>{item.code} - {item.name} </Text>
+                    </Pressable>
+                  :
+                    <Pressable style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
+                      <Icon style={styles.icons} name='radio-button-on' /> 
+                      <Text style={styles.itemSelect}>{item.code} - {item.name} </Text>              
+                    </Pressable>
+                
+              )        
+          })}
+      </View>
+        </>
     </ScrollView>         
   );
 }
