@@ -1,0 +1,183 @@
+[
+  {
+    "name": "United Arab Emirates Dirham",
+    "symbol": "AED",
+    "symbolNative": "د.إ.‏",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "AED",
+    "namePlural": "UAE dirhams"
+  },
+  {
+    "name": "Australian Dollar",
+    "symbol": "AU$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "AUD",
+    "namePlural": "Australian dollars"
+  },
+  {
+    "name": "Bulgarian Lev",
+    "symbol": "BGN",
+    "symbolNative": "лв.",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "BGN",
+    "namePlural": "Bulgarian leva"
+  },
+  {
+    "name": "Brunei Dollar",
+    "symbol": "BN$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "BND",
+    "namePlural": "Brunei dollars"
+  },
+  {
+    "name": "Canadian Dollar",
+    "symbol": "CA$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "CAD",
+    "namePlural": "Canadian dollars"
+  },
+  {
+    "name": "Chinese Yuan",
+    "symbol": "CN¥",
+    "symbolNative": "CN¥",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "CNY",
+    "namePlural": "Chinese yuan"
+  },
+  {
+    "name": "Danish Krone",
+    "symbol": "Dkr",
+    "symbolNative": "kr",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "DKK",
+    "namePlural": "Danish kroner"
+  },
+  {
+    "name": "Euro",
+    "symbol": "€",
+    "symbolNative": "€",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "EUR",
+    "namePlural": "euros"
+  },
+  {
+    "name": "British Pound Sterling",
+    "symbol": "£",
+    "symbolNative": "£",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "GBP",
+    "namePlural": "British pounds sterling"
+  },
+  {
+    "name": "Hong Kong Dollar",
+    "symbol": "HK$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "HKD",
+    "namePlural": "Hong Kong dollars"
+  },
+  {
+    "name": "Indonesian Rupiah",
+    "symbol": "Rp",
+    "symbolNative": "Rp",
+    "decimalDigits": 0,
+    "rounding": 0,
+    "code": "IDR",
+    "namePlural": "Indonesian rupiahs"
+  },
+  {
+    "name": "Japanese Yen",
+    "symbol": "¥",
+    "symbolNative": "￥",
+    "decimalDigits": 0,
+    "rounding": 0,
+    "code": "JPY",
+    "namePlural": "Japanese yen"
+  },
+  {
+    "name": "South Korean Won",
+    "symbol": "₩",
+    "symbolNative": "₩",
+    "decimalDigits": 0,
+    "rounding": 0,
+    "code": "KRW",
+    "namePlural": "South Korean won"
+  },
+  {
+    "name": "Malaysian Ringgit",
+    "symbol": "RM",
+    "symbolNative": "RM",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "MYR",
+    "namePlural": "Malaysian ringgits"
+  },
+  {
+    "name": "New Zealand Dollar",
+    "symbol": "NZ$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "NZD",
+    "namePlural": "New Zealand dollars"
+  },
+  {
+    "name": "Philippine Peso",
+    "symbol": "₱",
+    "symbolNative": "₱",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "PHP",
+    "namePlural": "Philippine pesos"
+  },
+  {
+    "name": "Singapore Dollar",
+    "symbol": "S$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "SGD",
+    "namePlural": "Singapore dollars"
+  },
+  {
+    "name": "Thai Baht",
+    "symbol": "฿",
+    "symbolNative": "฿",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "THB",
+    "namePlural": "Thai baht"
+  },
+  {
+    "name": "New Taiwan Dollar",
+    "symbol": "NT$",
+    "symbolNative": "NT$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "TWD",
+    "namePlural": "New Taiwan dollars"
+  },
+  {
+    "name": "US Dollar",
+    "symbol": "$",
+    "symbolNative": "$",
+    "decimalDigits": 2,
+    "rounding": 0,
+    "code": "USD",
+    "namePlural": "US dollars"
+  }
+
+]
