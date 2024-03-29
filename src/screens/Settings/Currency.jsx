@@ -116,13 +116,13 @@ export default function Currency() {
             {currencies.map((item)=> 
               {return(
                 (toCurrency != item.code) ? 
-                
-                    <Pressable style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
+                    
+                    <Pressable key={item.code} style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
                       <Icon style={styles.iconsOff} name='radio-button-off' />
                       <Text style={styles.item}>{item.code} - {item.name} </Text>
                     </Pressable>
                   :
-                    <Pressable style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
+                    <Pressable key={item.code} style={styles.linkButton}  onPress={() => { calculateOutput(item.code), scrollRef.current?.scrollTo({y: 0,animated: true,})} }> 
                       <Icon style={styles.icons} name='radio-button-on' /> 
                       <Text style={styles.itemSelect}>{item.code} - {item.name} </Text>              
                     </Pressable>
