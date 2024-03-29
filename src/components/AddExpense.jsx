@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import React, { useState } from 'react';
 import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -159,60 +158,6 @@ const styles = StyleSheet.create({
   },
     confirmView:{
         marginTop: 30,
-=======
-import React from 'react';
-import { View, Pressable, StyleSheet, Text, SafeAreaView, TextInput, Dimensions, FlatList} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Button, Divider } from 'react-native-elements';
-import { Component } from 'react';
-
-
-export default class AddExpense extends Component {
-  render() {
-    return (
-      <SafeAreaView style={[styles.container]}>
-
-        <View style={[styles.inner]}>
-        <Text style={styles.title}>Title</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
-
-        <View style={[styles.inner]}>
-        <Text style={styles.title}>Account</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
-
-        <View style={[styles.inner]}>
-        <Text style={styles.title}>Date</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
-
-        <View style={[styles.inner]}>
-        <Text style={styles.title}>Description</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
-
-        <View style={[styles.inner]}>
-        <Text style={styles.title}>Category</Text>
-        <TextInput style={[styles.input]}></TextInput>
-        </View>
-
-        <View style={[styles.confirmView]}>
-        <Pressable style={styles.button}>
-                        <Text style={styles.text}>Confirm</Text>
-                        </Pressable>
-        </View>
-
-
-      </SafeAreaView>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-    confirmView:{
-        marginTop: 80,
->>>>>>> Stashed changes
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -239,22 +184,15 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     input:{
-<<<<<<< Updated upstream
         width: 390,
-=======
-        width: 350,
->>>>>>> Stashed changes
         height: 40,
         margin: 2,
         borderWidth:1,
         flexDirection: 'row',
         borderColor: 'gray',
         backgroundColor: 'white',
-<<<<<<< Updated upstream
         borderRadius: 4,
         fontSize: 17,
-=======
->>>>>>> Stashed changes
     },
     title: {
         fontSize: 15,
@@ -267,10 +205,6 @@ const styles = StyleSheet.create({
         margin: 10,
         padding: 0,
     },
-<<<<<<< Updated upstream
 });
 
 export default AddExpense;
-=======
-})
->>>>>>> Stashed changes

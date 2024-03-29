@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import OutlineLayout from '../layout/outlinelayout';
 
-<<<<<<< Updated upstream
 export default function Budget({ Name, Amount, delBudget }) {
     return (
         <View style={{
@@ -21,22 +20,6 @@ export default function Budget({ Name, Amount, delBudget }) {
             </View>
             <Text style={{ flex: 2, textAlign: 'center', textDecorationLine: 'underline' }}>{'$' + Amount}</Text>
             <Button title="Delete" onPress={() => delBudget(Name)} />
-=======
-export default function Budget({Name, Amount}){
-    return(
-        <OutlineLayout>
-
-        <View>
-            <Text>
-                Name: {Name}
-            </Text>
-            <Text>
-                Amount: ${Amount}
-            </Text>
-            <Text>
-
-            </Text>
->>>>>>> Stashed changes
         </View>
     );
 }

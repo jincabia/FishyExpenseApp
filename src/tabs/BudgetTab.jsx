@@ -1,14 +1,7 @@
-<<<<<<< Updated upstream
 import React  from 'react';
 import { View, ScrollView, TextInput,Text,Button } from 'react-native';
-=======
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
->>>>>>> Stashed changes
 import MainLayout from '../layout/Mainlayout';
-import Budget from '../components/Budget';
 import BudgetList from '../components/BudgetList';
-<<<<<<< Updated upstream
 import { useNavigation } from '@react-navigation/native';
 
 export default function BudgetTab({budgets,delBudget}) {
@@ -24,24 +17,11 @@ export default function BudgetTab({budgets,delBudget}) {
 
 
   
-=======
-
-export default function BudgetTab(navigation) {
-
-  const [budget, setBudgets] = React.useState(
-    [
-      {Name: "Food", Amount:1000},
-      {Name: "Transportation", Amount:1000},
-      {Name: "Hosuing", Amount:1000},
-    ]
-  );
->>>>>>> Stashed changes
 
   return (
 
     
     <MainLayout>
-<<<<<<< Updated upstream
       <ScrollView>
 
         
@@ -97,11 +77,6 @@ export default function BudgetTab(navigation) {
         
       </ScrollView>
           
-=======
-          <View >
-            <BudgetList budgets={budget}/>
-          </View>
->>>>>>> Stashed changes
     </MainLayout>
    
     
