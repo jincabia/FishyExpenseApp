@@ -2,8 +2,11 @@ import React from 'react';
 import { View, Pressable, StyleSheet, Text, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Divider } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Settings(){
+    
     return(
         <SafeAreaView style={styles.container}> 
             <View style={styles.inner}>  

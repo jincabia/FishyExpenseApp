@@ -29,6 +29,7 @@ import ExpenseDetail from './src/components/ExpenseDetail';
 import AddExpense from './src/components/AddExpense';
 import EditExpense from './src/components/EditExpense';
 
+import Settings from './src/components/Settings';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -72,6 +73,8 @@ export default function App()
     setBudgets(updatedBudgets);
   }
 
+  
+
 
   function AddBudgetStackScreen() { 
     const AddBudgetStack = createNativeStackNavigator();
@@ -95,6 +98,18 @@ export default function App()
         <Stack.Screen name="AddSuccessPage" component={AddSuccess} />
         <Stack.Screen name="EditExpensePage" component={EditExpense} />
       </Stack.Navigator>
+    );
+  }
+
+  function SettingsStackScreen() { 
+    const SettingsStack = createNativeStackNavigator();
+    return (
+      <SettingsStack.Navigator>
+        <SettingsStack.Screen name='SettingsMain' options={{title: 'Settings'}} component={Settings} />
+        <SettingsStack.Screen name='Privacy Policy' component={Privacy} />
+        <SettingsStack.Screen name='Default Currency' component={Currency} />
+        <SettingsStack.Screen name='Contact Us' component={ContactUs} />
+      </SettingsStack.Navigator>
     );
   }
 
@@ -146,7 +161,7 @@ export default function App()
               <Tab.Screen name = 'Home' children ={()=><HomeTab  budgets={budget}/>}/>
               <Tab.Screen name = 'Budget' options={{headerShown: false, unmountOnBlur: true}} component={AddBudgetStackScreen}/>
               <Tab.Screen name='Expense' options={{headerShown: false, unmountOnBlur: true}} component={ExpenseStackNavigator}/>
-              <Tab.Screen name='Settings' component = {SettingsTab}/>
+              <Tab.Screen name='Settings' options={{headerShown: false, unmountOnBlur: true}} component={SettingsStackScreen} />     
           </Tab.Navigator>
 
           

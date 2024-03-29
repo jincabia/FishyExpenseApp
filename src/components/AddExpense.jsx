@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: '100%',
     paddingHorizontal: 10,
-    marginVertical: 10,
+    marginVertical: 0,
     backgroundColor: 'white',
   },
   dropdownButtonText: {
@@ -184,8 +184,8 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     input:{
-        width: 390,
-        height: 40,
+        width: '50%',
+        height: 10,
         margin: 2,
         borderWidth:1,
         flexDirection: 'row',
