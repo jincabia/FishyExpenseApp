@@ -7,13 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function BudgetTab({budgets,delBudget}) {
   const navigation = useNavigation();
 
-  const [income, setIncome] = React.useState("");
   
-
-  const HandleIncomeChange = (text) =>
-  {setIncome(text);
-  }
-
 
 
   
@@ -38,18 +32,7 @@ export default function BudgetTab({budgets,delBudget}) {
 
                         
                         }}>
-      <Text style={{fontWeight: 'bold',
-                          color: 'black'}}>Income : {income}</Text>
-
-      {/* Input for Income */}
-      <TextInput
-      style={{alignSelf:'flex-end',
-      textAlign: 'right',
-      textDecorationLine: 'underline'}}
-
-      placeholder="Enter Your Income"
-      onChangeText={HandleIncomeChange}
-              value={income}/>
+      
       
       
       
