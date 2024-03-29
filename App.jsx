@@ -21,15 +21,19 @@ import Icon from 'react-native-vector-icons/FontAwesome6';
 import HomeTab from './src/tabs/HomeTab';
 import BudgetTab from './src/tabs/BudgetTab';
 import Expense from './src/components/Expense';
-import SettingsTab from './src/tabs/SettingsTab';
+import SettingsTab from './src/tabs/SettingsTab_notused';
 
+// Screens for Settings
+import Settings from './src/screens/Settings/Settings';
+import Privacy from './src/screens/Settings/Privacy';
+import Currency from './src/screens/Settings/Currency';
+import ContactUs from './src/screens/Settings/ContactUs';
 import AddBudgetTab from './src/tabs/AddBudgetTab';
 import AddSuccess from './src/components/AddSuccessBudget';
 import ExpenseDetail from './src/components/ExpenseDetail';
 import AddExpense from './src/components/AddExpense';
 import EditExpense from './src/components/EditExpense';
 
-import Settings from './src/components/Settings';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -46,6 +50,18 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+  // Stack for Settings Screens
+  function SettingsStackScreen() { 
+    const SettingsStack = createNativeStackNavigator();
+    return (
+      <SettingsStack.Navigator>
+        <SettingsStack.Screen name='SettingsMain' options={{title: 'Settings'}} component={Settings} />
+        <SettingsStack.Screen name='Privacy Policy' component={Privacy} />
+        <SettingsStack.Screen name='Default Currency' component={Currency} />
+        <SettingsStack.Screen name='Contact Us' component={ContactUs} />
+      </SettingsStack.Navigator>
+    );
+  }
 
 export default function App()
 {
@@ -135,14 +151,14 @@ export default function App()
                 if (route.name === 'Home') {
                   iconName = 'house';
                 }
-                else if (route.name == "Budget") {
+                else if (route.name == 'Budget') {
                   iconName = 'money-check-dollar';
                 } 
-                else if (route.name == "Expense") {
+                else if (route.name == 'Expense') {
                   iconName = 'sack-dollar';
                 }
-                else if (route.name == "Settings") {
-                  iconName = 'gear';
+                else if (route.name == 'Settings') {
+                  iconName = 'gear';                                    
                 }
                 return <Icon name={iconName} size={size} color={color} />;
               },
@@ -152,9 +168,10 @@ export default function App()
               tabBarTintColor: '#0079C1',  
               tabBarLabelStyle: {
                 fontSize: 14,
+                fontWeight: 'bold',
                 fontFamily: 'Inter', 
                 flex: 1,                                 
-              }, 
+              },               
               tabBarStyle: {height: 70, alignContent: 'center'}
             })}            
           >
