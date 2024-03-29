@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 
 
-export default AddSuccess = () => {
+export default AddExpenseSuccess = () => {
     const route = useRoute();
     const { data } = route.params;
     const navigation = useNavigation()

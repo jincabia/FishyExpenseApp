@@ -21,19 +21,24 @@ export default function Expense( route ) {
 
   useEffect(() => {
     setFilteredData(data.filter(item => {
-      return item.title.includes(searchText) ||
-             item.amount.includes(searchText) ||
-             item.date.includes(searchText) ||
-             item.category.includes(searchText);
+      return (
+        (item.title && item.title.includes(searchText)) ||
+        (item.amount && item.amount.includes(searchText)) ||
+        (item.date && item.date.includes(searchText)) ||
+        (item.category && item.category.includes(searchText))
+      );
     }));
   }, [searchText, data]);
+  
   
   const getAllData = async () => {
     try {
       const storedData = await Storage.getAllData();
-      const formattedData = storedData.map(item => item.value);
+      const formattedData = storedData
+        .filter(item => item.value && item.value.category)
+        .map(item => item.value); 
       setData(formattedData);
-      console.log(storedData)
+      console.log(formattedData);
     } catch (error) {
       console.error('Error getting all data:', error);
     }

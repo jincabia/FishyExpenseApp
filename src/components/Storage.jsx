@@ -46,12 +46,21 @@ class Storage {
         try {
             const keys = await AsyncStorage.getAllKeys();
             const data = await AsyncStorage.multiGet(keys);
-            return data.map(([key, value]) => ({ key, value: JSON.parse(value) }));
+            return data.map(([key, value]) => {
+                try {
+                    const parsedValue = JSON.parse(value);
+                    return { key, value: parsedValue };
+                } catch (error) {
+                    console.error(`Error parsing data for key "${key}":`, error);
+                    return { key, value: null };
+                }
+            });
         } catch (error) {
             console.error('Error retrieving data from AsyncStorage:', error);
             return [];
         }
     }
+    
 }
 
 export default Storage;

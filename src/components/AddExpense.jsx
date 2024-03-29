@@ -24,7 +24,7 @@ const AddExpense = () => {
     { key: '1', value: 'Groceries' },
     { key: '2', value: 'Rent' },
     { key: '3', value: 'Utilities' },
-    { key: '4', value: 'Entertainment' }
+    { key: '4', value: 'Entertainment' },
   ];
 
   const handleCategorySelect = (selectedItem, index) => {

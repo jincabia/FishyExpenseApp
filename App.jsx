@@ -33,6 +33,7 @@ import Privacy from './src/screens/Settings/Privacy';
 import Currency from './src/screens/Settings/Currency';
 import ContactUs from './src/screens/Settings/ContactUs';
 
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AddExpenseSuccess from './src/components/AddExpenseSuccess';
 
 
 export default function App()
@@ -91,11 +93,11 @@ export default function App()
 
   function ExpenseStackNavigator() {
     return (
-      <Stack.Navigator initialRouteName='ExpensePage' screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName='ExpensePage'>
         <Stack.Screen name="ExpensePage" component={Expense} />
         <Stack.Screen name="AddExpensePage" component={AddExpense} />
         <Stack.Screen name="ExpenseDetailPage" component={ExpenseDetail} />
-        <Stack.Screen name="AddSuccessPage" component={AddSuccess} />
+        <Stack.Screen name="AddSuccessPage" component={AddExpenseSuccess} />
         <Stack.Screen name="EditExpensePage" component={EditExpense} />
       </Stack.Navigator>
     );
