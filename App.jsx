@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -28,7 +27,11 @@ import AddSuccess from './src/components/AddSuccessBudget';
 import ExpenseDetail from './src/components/ExpenseDetail';
 import AddExpense from './src/components/AddExpense';
 import EditExpense from './src/components/EditExpense';
-
+// Screens for Settings
+import Settings from './src/screens/Settings/Settings';
+import Privacy from './src/screens/Settings/Privacy';
+import Currency from './src/screens/Settings/Currency';
+import ContactUs from './src/screens/Settings/ContactUs';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -98,7 +101,18 @@ export default function App()
     );
   }
 
-
+  // Stack for Settings Screens
+  function SettingsStackScreen() { 
+    const SettingsStack = createNativeStackNavigator();
+    return (
+      <SettingsStack.Navigator>
+        <SettingsStack.Screen name='SettingsMain' options={{title: 'Settings'}} component={Settings} />
+        <SettingsStack.Screen name='Privacy Policy' component={Privacy} />
+        <SettingsStack.Screen name='Default Currency' component={Currency} />
+        <SettingsStack.Screen name='Contact Us' component={ContactUs} />
+      </SettingsStack.Navigator>
+    );
+  }
 
 
   return(
@@ -146,7 +160,7 @@ export default function App()
               <Tab.Screen name = 'Home' children ={()=><HomeTab  budgets={budget}/>}/>
               <Tab.Screen name = 'Budget' options={{headerShown: false, unmountOnBlur: true}} component={AddBudgetStackScreen}/>
               <Tab.Screen name='Expense' options={{headerShown: false, unmountOnBlur: true}} component={ExpenseStackNavigator}/>
-              <Tab.Screen name='Settings' component = {SettingsTab}/>
+              <Tab.Screen name='Settings' options={{headerShown: false, unmountOnBlur: true}} component={SettingsStackScreen} />  
           </Tab.Navigator>
 
           
