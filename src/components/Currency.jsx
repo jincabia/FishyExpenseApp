@@ -9,7 +9,7 @@ import {
   Pressable, 
   ScrollView
 } from "react-native";
-import data from '../../assets/files/currencies.json';
+import data from '../assets/files/currencies.json';
 //import defaultCurrency from  '../../assets/files/defaultCurrency.json';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Divider } from 'react-native-elements';
@@ -37,7 +37,7 @@ export default function Currency() {
   const [rate, setRate] = useState();
 
   // reuse the StyleSheet
-  const styles = require('../../../styles');
+  const styles = require('../../styles');
 
   // for auto scroll to top after selection
   const scrollRef = useRef(); 

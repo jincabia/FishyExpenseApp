@@ -5,7 +5,7 @@ import { Divider } from 'react-native-elements';
 export default function Privacy() {
  
     // Reuse the StyleSheet
-    const styles = require('../../../styles');
+    const styles = require('../../styles');
 
   return (
     <ScrollView style={styles.container}>
