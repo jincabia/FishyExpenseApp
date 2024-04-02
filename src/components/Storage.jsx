@@ -48,7 +48,10 @@ class Storage {
             const data = await AsyncStorage.multiGet(keys);
             return data.map(([key, value]) => {
                 try {
-                    const parsedValue = JSON.parse(value);
+                    let parsedValue = '';
+                    if (key != 'toCode' && key != 'fromCode' && key != 'rate')
+                        parsedValue = JSON.parse(value);
+                   
                     return { key, value: parsedValue };
                 } catch (error) {
                     console.error(`Error parsing data for key "${key}":`, error);
