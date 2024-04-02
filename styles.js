@@ -39,9 +39,10 @@ module.exports = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         color: 'white',
-        margin: 5,
-        padding: 5,
-        borderRadius: 5       
+        elevation: 3,
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,         
     },
     divider: {
         height: 2, 

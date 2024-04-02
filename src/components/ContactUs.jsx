@@ -20,7 +20,7 @@ export default function ContactUs() {
   });
 
   // Reuse the StyleSheet
-  const styles = require('../../../styles');
+  const styles = require('../../styles');
 
   const handleChange = (field, value) => {
     setFormData({
