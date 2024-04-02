@@ -19,7 +19,7 @@ export default function Budget({Name, Amount}){
 
             </Text>
 
-            <View style={styles.form}>
+            <View >
             
           
         <Button title="Add" onPress={handlePress} />

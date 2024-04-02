@@ -14,6 +14,8 @@ export default function Budget({ Name, Amount, delBudget }) {
             borderWidth: 1,
     borderColor: 'black',
     borderRadius:5,
+    width:'100%'
+    
         }}>
             <View style={{ flex: 2, }}>
                 <Text style={{ fontWeight: 'bold', color: 'black' }}>{Name}</Text>
