@@ -28,10 +28,10 @@ import ExpenseDetail from './src/components/ExpenseDetail';
 import AddExpense from './src/components/AddExpense';
 import EditExpense from './src/components/EditExpense';
 // Screens for Settings
-import Settings from './src/screens/Settings/Settings';
-import Privacy from './src/screens/Settings/Privacy';
-import Currency from './src/screens/Settings/Currency';
-import ContactUs from './src/screens/Settings/ContactUs';
+import Settings from './src/components/Settings';
+import Privacy from './src/components/Privacy';
+import Currency from './src/components/Currency';
+import ContactUs from './src/components/ContactUs';
 
 
 const Tab = createBottomTabNavigator();
@@ -94,11 +94,11 @@ export default function App()
   function ExpenseStackNavigator() {
     return (
       <Stack.Navigator initialRouteName='ExpensePage'>
-        <Stack.Screen name="ExpensePage" component={Expense} />
-        <Stack.Screen name="AddExpensePage" component={AddExpense} />
-        <Stack.Screen name="ExpenseDetailPage" component={ExpenseDetail} />
-        <Stack.Screen name="AddSuccessPage" component={AddExpenseSuccess} />
-        <Stack.Screen name="EditExpensePage" component={EditExpense} />
+        <Stack.Screen name="ExpensePage" component={Expense} options={{title: 'All Expenses'}}/>
+        <Stack.Screen name="AddExpensePage" component={AddExpense} options={{title: 'Add an Expense'}}/>
+        <Stack.Screen name="ExpenseDetailPage" component={ExpenseDetail} options={{title: 'Details'}}/>
+        <Stack.Screen name="AddSuccessPage" component={AddExpenseSuccess} options={{title: 'Succeed'}}/>
+        <Stack.Screen name="EditExpensePage" component={EditExpense} options={{title: 'Edit'}}/>
       </Stack.Navigator>
     );
   }
